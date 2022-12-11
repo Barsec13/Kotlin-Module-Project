@@ -1,25 +1,24 @@
 import java.util.*
-fun input(quantity: Int): String{
+
+fun input(quantity: Int): String {
     var text: String
 
-    while(true){
+    while (true) {
         text = Scanner(System.`in`).nextLine()
-        if (text.isNullOrBlank()){
+        if (text.isBlank()) {
             println("Вы ничего не ввели")
-        }
-        else {
-            if (text.toIntOrNull() != null)
-                while (true){
-                    if (text.toInt() <= quantity && text.toInt() >= 0){
+        } else {
+            if (quantity != 0)
+                while (true) {
+                    if (text.toIntOrNull() != null && text.toInt() in 0..quantity) {
                         break
-                    }
-                    else {
+                    } else {
                         println("Введите цифру из списка для выбора пункта")
+                        text = Scanner(System.`in`).nextLine()
                     }
                 }
             break
         }
     }
-
     return text
 }

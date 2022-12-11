@@ -1,7 +1,5 @@
-import java.util.*
-
 fun menu(name: String, items: Iterable<String>) {
-        println("$name")
+        println(name)
         println("0. Создать")
         var quantity = 1
         items.forEach { println("${quantity++}. $it") }
@@ -11,13 +9,13 @@ fun menu(name: String, items: Iterable<String>) {
 fun addArchive(archives: MutableMap<String, MutableMap<String, String>>) {
     println("Введите название архива")
     val name = input(0)
-    archives.put(name, mutableMapOf())
+    archives[name] = mutableMapOf()
 }
 
 fun addNote(notes: MutableMap<String, String>){
     println("Введите название заметки")
     val name = input(0)
-    notes.put(name, "Введите текст заметки")
+    notes[name] = "Введите текст заметки"
 }
 
 fun openNote(notes: MutableMap<String, String>, number: Int){
@@ -29,9 +27,8 @@ fun openNote(notes: MutableMap<String, String>, number: Int){
         val textNote = input(0)
         when(textNote){
             "0" -> break
-            else ->{
-                notes.put(notes.keys.elementAt(number - 1), textNote)
-            }
+            else -> notes.put(notes.keys.elementAt(number - 1), textNote)
+
         }
     }
 }
